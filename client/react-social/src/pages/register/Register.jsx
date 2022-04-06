@@ -1,6 +1,6 @@
 import "./register.css";
 import Form from 'react-bootstrap/Form';
-import {Button, Col, Row } from "react-bootstrap";
+import {Button } from "react-bootstrap";
 
 export default function Register() {
   return (
@@ -8,6 +8,7 @@ export default function Register() {
       <div className="shadow p-5 loginWrapper">
         {/* left column  */}
         <div className="loginLeft">
+          <img style={{height:"5rem", width: "8rem" }} src ="./assets/ttnlogo.jpg"></img>
           <h3 className="loginLogo">Buzzz</h3>
           <span className="loginDesc">
             Connect with friends and the world around you on Buzzz.
