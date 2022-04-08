@@ -1,4 +1,5 @@
 import "./sidebar.css";
+import { ListGroup, Button } from "react-bootstrap";
 import {
   RssFeed,
   Chat,
@@ -16,52 +17,55 @@ import CloseFriend from "../closeFriend/CloseFriend";
 export default function Sidebar() {
   return (
     <div className="sidebar">
-      <div className="sidebarWrapper">
-        <ul className="sidebarList">
-          <li className="sidebarListItem">
+      <div className="p-2">
+        <ListGroup>
+          <ListGroup.Item variant="light">
             <RssFeed className="sidebarIcon" />
-            <span className="sidebarListItemText">Feed</span>
-          </li>
-          <li className="sidebarListItem">
+            <span >Feed</span> 
+          </ListGroup.Item>
+          <ListGroup.Item variant="light">
             <Chat className="sidebarIcon" />
-            <span className="sidebarListItemText">Chats</span>
-          </li>
-          <li className="sidebarListItem">
+            <span >Chats</span> 
+          </ListGroup.Item>
+          <ListGroup.Item variant="light">
             <PlayCircleFilledOutlined className="sidebarIcon" />
-            <span className="sidebarListItemText">Videos</span>
-          </li>
-          <li className="sidebarListItem">
+            <span >Videos</span> 
+          </ListGroup.Item>
+          <ListGroup.Item variant="light">
             <Group className="sidebarIcon" />
-            <span className="sidebarListItemText">Groups</span>
-          </li>
-          <li className="sidebarListItem">
+            <span >Groups</span> 
+          </ListGroup.Item>
+          <ListGroup.Item variant="light">
             <Bookmark className="sidebarIcon" />
-            <span className="sidebarListItemText">Bookmarks</span>
-          </li>
-          <li className="sidebarListItem">
+            <span >Bookmark</span> 
+          </ListGroup.Item>
+          <ListGroup.Item variant="light">
             <HelpOutline className="sidebarIcon" />
-            <span className="sidebarListItemText">Questions</span>
-          </li>
-          <li className="sidebarListItem">
+            <span >Questions</span> 
+          </ListGroup.Item>
+          <ListGroup.Item variant="light">
             <WorkOutline className="sidebarIcon" />
-            <span className="sidebarListItemText">Jobs</span>
-          </li>
-          <li className="sidebarListItem">
+            <span >Jobs</span> 
+          </ListGroup.Item>
+          <ListGroup.Item variant="light">
             <Event className="sidebarIcon" />
-            <span className="sidebarListItemText">Events</span>
-          </li>
-          <li className="sidebarListItem">
+            <span >Events</span> 
+          </ListGroup.Item>
+          <ListGroup.Item variant="light">
             <School className="sidebarIcon" />
-            <span className="sidebarListItemText">Courses</span>
-          </li>
-        </ul>
-        <button className="sidebarButton">Show More</button>
-        <hr className="sidebarHr" />
-        <ul className="sidebarFriendList">
+            <span >Courses</span> 
+          </ListGroup.Item>
+        </ListGroup>
+        {/* show more button */}
+        <Button className="mt-2" variant="success">Show More</Button>
+
+        <ListGroup className="mt-2">
+          <ListGroup.Item>
           {Users.map((u) => (
             <CloseFriend key={u.id} user={u} />
           ))}
-        </ul>
+          </ListGroup.Item>
+        </ListGroup>
       </div>
     </div>
   );
