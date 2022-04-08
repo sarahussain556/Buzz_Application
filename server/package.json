@@ -218,7 +218,7 @@
   "scripts": {
     "start-dev": "nodemon index.js"
   },
-  "keywords": [],
+  "proxy":"http://localhost:3001/server",
   "author": "",
   "license": "ISC"
 }
