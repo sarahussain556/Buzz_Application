@@ -23,7 +23,7 @@ export default function Register() {
               <Form.Control className="mb-2"  type="password" placeholder="Enter Password" />
               <Form.Control className="mb-2"  type="password" placeholder="Retype Password" />
               <Button variant="primary"> SIGN UP </Button>
-              <Button variant="outline-danger" style={{marginLeft:"1rem"}}>Log into your account</Button>
+              <Button className="mt-2" variant="outline-danger" style={{marginLeft:"1rem"}}>Log into your account</Button>
             </Form.Group>
 
           </Form>
