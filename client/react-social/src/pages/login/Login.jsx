@@ -1,58 +1,66 @@
-import React from "react";
-import Form from 'react-bootstrap/Form';
-import {Button, Col, Row } from "react-bootstrap";
+import { useContext, useRef } from "react";
+import "./login.css";
+import { loginCall } from "../../apiCalls";
+import { AuthContext } from "../../context/AuthContext";
+import { CircularProgress } from "@material-ui/core";
 
+export default function Login() {
+  const email = useRef();
+  const password = useRef();
+  const { isFetching, dispatch } = useContext(AuthContext);
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    loginCall(
+      { email: email.current.value, password: password.current.value },
+      dispatch
+    );
+  };
 
-const Login = () => {
   return (
-    <div class="container shadow p-3 m-5 bg-white rounded ">
-      <div class="row">
-          <div class="col justify-content-center p-3 mb-5 bg-white rounded m-5  ">
-          <div className="text-center">
-            <img style={{height:"5rem", width: "8rem" }} src ="./assets/ttnlogo.jpg"></img>
-              <h3 className ="mt-5"> Enter your details and Start your journey with us</h3>
-              <p className="mt-3"> Don't stop until you are proud.</p>
-              <Form>
-              <Button className="mt-5 rounded-pill btn-lg" variant="outline-danger">Sign in with Google</Button>
-              </Form>
-          </div>
-
-          </div>
-
-      <div className="col ">
-      <Form className="shadow p-3 mb-5 bg-white rounded m-5 justify-content-center">
-		          
-            <h3 className=" mt-2 text-center"> Login to Your Account</h3>
-            <Form.Group className="mt-4" controlId="formBasicEmail">
-               
-                <Form.Control className="mt-5"  type="email" placeholder="TTN Username" />
-                <Form.Control className="mt-4" type="password" placeholder="Enter Password" />
-
-                <Row>
-                  <Col>
-                    <Form.Check className="mt-4" type="checkbox" label="Remeber Me" />
-
-                  </Col>
-                  <Col>
-                    <Form.Check className="mt-4" type="checkbox" label="Forget Password" />
-                  </Col>
-                </Row>
-
-                
-            </Form.Group>
-            <div className="text-center mt-4">
-            <Button className="mt-5 rounded-pill btn-lg m-3 text-center" style={{backgroundColor: "#AB5FB0", border: "none"}} variant="success">
-              Sign in
-            </Button>
-
-            </div>
-        </Form>
-
+    <div className="login">
+      <div className="loginWrapper">
+        <div className="loginLeft">
+          <h3 className="loginLogo">Buzzz Application</h3>
+          <span className="loginDesc">
+            Connect with friends and the world around you on Lamasocial.
+          </span>
+        </div>
+        <div className="loginRight">
+          <form className="loginBox" onSubmit={handleClick}>
+            <input
+              placeholder="Email"
+              type="email"
+              required
+              className="loginInput"
+              ref={email}
+            />
+            <input
+              placeholder="Password"
+              type="password"
+              required
+              minLength="6"
+              className="loginInput"
+              ref={password}
+            />
+            <button className="loginButton" type="submit" disabled={isFetching}>
+              {isFetching ? (
+                <CircularProgress color="white" size="20px" />
+              ) : (
+                "Log In"
+              )}
+            </button>
+            <span className="loginForgot">Forgot Password?</span>
+            <button className="loginRegisterButton">
+              {isFetching ? (
+                <CircularProgress color="white" size="20px" />
+              ) : (
+                "Create a New Account"
+              )}
+            </button>
+          </form>
+        </div>
       </div>
-  </div>
-  </div>
-    
+    </div>
   );
-};
-export default Login;
+}
