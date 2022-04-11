@@ -1,32 +1,78 @@
+import axios from "axios";
+import { useRef } from "react";
 import "./register.css";
-import Form from 'react-bootstrap/Form';
-import {Button } from "react-bootstrap";
+import { useHistory } from "react-router";
 
 export default function Register() {
+  const username = useRef();
+  const email = useRef();
+  const password = useRef();
+  const passwordAgain = useRef();
+  const history = useHistory();
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    if (passwordAgain.current.value !== password.current.value) {
+      passwordAgain.current.setCustomValidity("Passwords don't match!");
+    } else {
+      const user = {
+        username: username.current.value,
+        email: email.current.value,
+        password: password.current.value,
+      };
+      try {
+        await axios.post("/auth/register", user);
+        history.push("/login");
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
   return (
-    <div className="container-fluid justify-content-center  login">
-      <div className="shadow p-5 loginWrapper">
-        {/* left column  */}
+    <div className="login">
+      <div className="loginWrapper">
         <div className="loginLeft">
-          <img style={{height:"5rem", width: "8rem" }} src ="./assets/ttnlogo.jpg"></img>
-          <h3 className="loginLogo">Buzzz</h3>
+          <h3 className="loginLogo">Buzzz Application</h3>
           <span className="loginDesc">
-            Connect with friends and the world around you on Buzzz.
+            Connect with friends and the world around you on Lamasocial.
           </span>
         </div>
-        {/* right column */}
-        <div className="loginRight shadow">
-          <Form className="shadow p-3 mb-5 bg-white rounded m-5 justify-content-center">
-            <Form.Group >
-              <Form.Control className="mb-2"  type="username" placeholder="TTN Username" />
-              <Form.Control className="mb-2"  type="email" placeholder="TTN email" />
-              <Form.Control className="mb-2"  type="password" placeholder="Enter Password" />
-              <Form.Control className="mb-2"  type="password" placeholder="Retype Password" />
-              <Button variant="primary"> SIGN UP </Button>
-              <Button variant="outline-danger" style={{marginLeft:"1rem"}}>Log into your account</Button>
-            </Form.Group>
-
-          </Form>
+        <div className="loginRight">
+          <form className="loginBox" onSubmit={handleClick}>
+            <input
+              placeholder="Username"
+              required
+              ref={username}
+              className="loginInput"
+            />
+            <input
+              placeholder="Email"
+              required
+              ref={email}
+              className="loginInput"
+              type="email"
+            />
+            <input
+              placeholder="Password"
+              required
+              ref={password}
+              className="loginInput"
+              type="password"
+              minLength="6"
+            />
+            <input
+              placeholder="Password Again"
+              required
+              ref={passwordAgain}
+              className="loginInput"
+              type="password"
+            />
+            <button className="loginButton" type="submit">
+              Sign Up
+            </button>
+            <button className="loginRegisterButton">Log into Account</button>
+          </form>
         </div>
       </div>
     </div>
