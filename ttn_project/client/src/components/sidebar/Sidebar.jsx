@@ -55,7 +55,8 @@ export default function Sidebar() {
             <span className="sidebarListItemText">Courses</span>
           </li>
         </ul>
-        <button className="sidebarButton">Show More</button>
+        <button className="sidebarButton">Show More</button> <br/> <br/>
+        <button className="logoutButton" onClick={() =>{localStorage.clear()}}>Logout</button>
         <hr className="sidebarHr" />
         <ul className="sidebarFriendList">
           {Users.map((u) => (

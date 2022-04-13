@@ -44,6 +44,15 @@
   font-weight: 500;
 }
 
+.logoutButton {
+  width: 150px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color:red;
+  font-weight: 500;
+}
+
 .sidebarHr {
   margin: 20px 0;
 }
