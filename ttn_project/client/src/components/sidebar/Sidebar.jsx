@@ -1,4 +1,5 @@
 import "./sidebar.css";
+import { Link } from "react-router-dom";
 import {
   RssFeed,
   Chat,
@@ -56,7 +57,9 @@ export default function Sidebar() {
           </li>
         </ul>
         <button className="sidebarButton">Show More</button> <br/> <br/>
+        <Link to="/Login" style={{ textDecoration: "none" }}>
         <button className="logoutButton" onClick={() =>{localStorage.clear()}}>Logout</button>
+        </Link>
         <hr className="sidebarHr" />
         <ul className="sidebarFriendList">
           {Users.map((u) => (
