@@ -23,8 +23,9 @@ export default function Login() {
       <div className="loginWrapper">
         <div className="loginLeft">
           <h3 className="loginLogo">Buzzz Application</h3>
+          
           <span className="loginDesc">
-            Connect with friends and the world around you on Buzz.
+          Enter your details and start your journey with us :)
           </span>
         </div>
         <div className="loginRight">
@@ -56,7 +57,7 @@ export default function Login() {
               {isFetching ? (
                 <CircularProgress color="white" size="20px" />
               ) : (
-                // "Create a New Account"  
+                
                 <Link to="/Register" style={{ textDecoration: "none" }}>
                 <button className="loginRegisterButton">Create New Account</button>
               </Link>

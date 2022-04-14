@@ -34,9 +34,15 @@ export default function Register() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
+
+        
+
           <h3 className="loginLogo">Buzzz Application</h3>
+         
           <span className="loginDesc">
+         
           Enter your details and start your journey with us :)
+
           </span>
         </div>
         <div className="loginRight">
