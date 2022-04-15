@@ -8,6 +8,7 @@
 -> timeago(to display time of feeds)
 
 *Backend*
+->Node js
 ->MongoDB
 ->Express
 ->Mongoose
